@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hungflix | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { netflix: '#0f0f0f', redNetflix: '#e50914' } } }
+        }
+    </script>
+    <style>
+        /* Ẩn thanh cuộn nhưng vẫn cho phép cuộn */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Chỉnh con trỏ chuột cho Desktop */
+        .cursor-grab { cursor: grab; }
+        .cursor-grabbing { cursor: grabbing; }
+        
+        /* Tắt bôi đen text/ảnh khi kéo */
+        .select-none { user-select: none; -webkit-user-drag: none; }
+    </style>
+</head>
+<body class="bg-netflix text-white font-sans antialiased overflow-x-hidden">
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-gradient-to-b from-black/90 to-transparent p-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-8">
+            <a href="index.html" class="text-redNetflix text-3xl font-bold tracking-wider">HUNGFLIX</a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-gray-300 transition">Trang chủ</a>
+                <a href="category.html?slug=phim-le" class="hover:text-gray-300 transition">Phim Lẻ</a>
+                <a href="category.html?slug=phim-bo" class="hover:text-gray-300 transition">Phim Bộ</a>
+                <a href="category.html?slug=hoat-hinh" class="hover:text-gray-300 transition">Hoạt Hình</a>
+                <a href="category.html?slug=tv-shows" class="hover:text-gray-300 transition">TV Shows</a>
+            </div>
+        </div>
+
+        <div class="relative w-full md:w-64">
+            <form action="search.html" method="GET" class="flex items-center">
+                <input type="text" name="keyword" required placeholder="Tên phim, đạo diễn..." 
+                       class="w-full bg-black/60 border border-gray-600 text-white text-sm rounded-full px-4 py-2 focus:outline-none focus:border-redNetflix focus:bg-black transition-all placeholder-gray-400">
+                <button type="submit" class="absolute right-3 text-gray-400 hover:text-white">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </button>
+            </form>
+        </div>
+    </nav>
+
+    <div id="hero-section" class="relative h-[85vh] w-full bg-cover bg-center transition-all duration-700" style="background-image: url('');">
+        <div class="absolute inset-0 bg-gradient-to-t from-netflix via-netflix/40 to-transparent"></div>
+        <div id="hero-content" class="absolute bottom-1/4 left-4 md:left-12 w-full md:w-1/2 p-4 hidden">
+            <h1 id="hero-title" class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-2xl">Loading...</h1>
+            <p id="hero-desc" class="text-sm md:text-lg text-gray-200 mb-6 line-clamp-3 drop-shadow-md max-w-2xl"></p>
+            <div class="flex gap-4">
+                <a id="hero-link" href="#" class="bg-white text-black px-6 md:px-8 py-2 md:py-3 rounded font-bold hover:bg-gray-300 transition duration-300 flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg> Phát
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main class="relative z-10 -mt-32 px-4 md:px-12 pb-12 space-y-10 select-none">
+        <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-2 text-gray-100 px-2">Phim Mới Cập Nhật</h2>
+            <div id="latest-movies" class="flex overflow-x-auto space-x-4 no-scrollbar py-4 scroll-container px-2 pb-8"></div>
+        </section>
+
+        <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-2 text-gray-100 px-2">Phim Lẻ Nổi Bật</h2>
+            <div id="movies-single" class="flex overflow-x-auto space-x-4 no-scrollbar py-4 scroll-container px-2 pb-8"></div>
+        </section>
+
+        <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-2 text-gray-100 px-2">Phim Bộ Đáng Xem</h2>
+            <div id="movies-series" class="flex overflow-x-auto space-x-4 no-scrollbar py-4 scroll-container px-2 pb-8"></div>
+        </section>
+        
+        <section>
+            <h2 class="text-xl md:text-2xl font-semibold mb-2 text-gray-100 px-2">Hoạt Hình - Anime</h2>
+            <div id="movies-anime" class="flex overflow-x-auto space-x-4 no-scrollbar py-4 scroll-container px-2 pb-8"></div>
+        </section>
+    </main>
+
+    <footer class="w-full bg-[#0a0a0a] border-t border-gray-800 text-center py-8 mt-12">
+        <p class="text-gray-500 font-medium">Developed by <span class="text-redNetflix font-bold">hungtunes</span></p>
+        <p class="text-gray-600 text-sm mt-2">&copy; 2024 Hungflix. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
