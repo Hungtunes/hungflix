@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tìm kiếm | Hungflix</title>
+    <title>Tìm kiếm | HUNGFLIX</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -12,6 +12,7 @@
     </script>
 </head>
 <body class="bg-netflix text-white font-sans antialiased min-h-screen flex flex-col">
+    
     <nav class="w-full transition-all duration-300 bg-netflix p-4 flex flex-col md:flex-row justify-between items-center gap-4 border-b border-gray-800">
         <div class="flex items-center gap-8">
             <a href="index.html" class="text-redNetflix text-3xl font-bold tracking-wider">HUNGFLIX</a>
@@ -35,20 +36,22 @@
         </div>
     </nav>
 
-    <main class="flex-grow px-4 md:px-12 py-8">
-        <div class="max-w-3xl mx-auto mb-10 relative">
-            <input type="text" id="search-input" placeholder="Nhập tên phim cần tìm..." 
-                   class="w-full bg-gray-900 border border-gray-700 text-white rounded px-4 py-4 focus:outline-none focus:border-gray-500 text-lg transition shadow-lg">
-            <svg class="w-6 h-6 absolute right-4 top-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        </div>
-
-        <div id="search-results" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            </div>
-        
-        <div id="search-message" class="text-center text-gray-400 mt-10 text-xl">
+    <main class="flex-grow px-4 md:px-12 py-8 w-full max-w-7xl mx-auto">
+        <div id="search-message" class="text-center text-gray-400 mt-10 text-xl font-medium">
             Hãy nhập từ khóa để tìm kiếm phim.
         </div>
+
+        <div id="search-results" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
+            </div>
+        
+        <div id="pagination-container" class="mt-12 flex justify-center flex-wrap gap-2">
+            </div>
     </main>
+
+    <footer class="w-full bg-[#0a0a0a] border-t border-gray-800 text-center py-8 mt-12">
+        <p class="text-gray-500 font-medium">Developed by <span class="text-redNetflix font-bold">hungtunes</span></p>
+        <p class="text-gray-600 text-sm mt-2">&copy; 2024 HUNGFLIX. All rights reserved.</p>
+    </footer>
 
     <script type="module" src="js/search.js"></script>
 </body>

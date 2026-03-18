@@ -1,7 +1,7 @@
 const BASE_URL = 'https://phim.nguonc.com/api';
 
 /**
- * Throws a standard error if API response is not ok
+ * Hàm dùng chung để bắt lỗi và parse JSON
  */
 async function fetchAPI(endpoint) {
     try {
@@ -15,7 +15,9 @@ async function fetchAPI(endpoint) {
     }
 }
 
+// Các endpoint của API NguonC
 export const getLatestMovies = (page = 1) => fetchAPI(`/films/phim-moi-cap-nhat?page=${page}`);
 export const getMovieDetail = (slug) => fetchAPI(`/film/${slug}`);
-export const searchMovies = (keyword) => fetchAPI(`/films/search?keyword=${encodeURIComponent(keyword)}`);
+// Thêm tham số page vào hàm search
+export const searchMovies = (keyword, page = 1) => fetchAPI(`/films/search?keyword=${encodeURIComponent(keyword)}&page=${page}`);
 export const getCategoryMovies = (slug, page = 1) => fetchAPI(`/films/danh-sach/${slug}?page=${page}`);
